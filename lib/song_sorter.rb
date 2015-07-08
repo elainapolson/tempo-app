@@ -9,13 +9,10 @@ class SongSorter
   end
 
   def get_song_objects(hash)
-    hash["tracks"].each do |song_hash|
-      Song.create(:title => song_hash['track_name'], :artist => song_hash['artist_name'], :track_url => song_hash['track_url'].gsub("https://play.spotify.com/track/", ""))
+    hash["tracks"][1..100].each do |song_hash|
+      Song.find_or_create_by(:title => song_hash['track_name'], :artist => song_hash['artist_name'], :track_url => song_hash['track_url'].gsub("https://play.spotify.com/track/", ""))
     end
   end
-
-# For each of those song objects, we need to assign a tempo
-
 
   # http://developer.echonest.com/api/v4/song/profile?api_key=LIEBMXRVRAQ7FSQIX&track_id=spotify:track:4toSP60xmDNCFuXly8ywNZ&bucket=id:spotify&bucket=audio_summary
   
@@ -23,37 +20,29 @@ class SongSorter
     "http://developer.echonest.com/api/v4/song/profile?api_key=LIEBMXRVRAQ7FSQIX&track_id=spotify:track:#{track_url}&bucket=id:spotify&bucket=audio_summary" 
   end
 
-  def get_url_for_a_song(song_track)
-    get_echonest_url(song_track)
-  end
-
   def assign_bpms
     Song.all.each do |song|
-      binding.pry
-      get_echonest_url(song.track_url)
-      json_link = get_url_for_a_song(song)
-      JSON.load(open "#{json_link}")
-      song.bpm = hash[:response][:songs][0][:audio_summary][:tempo]
+      json_link = get_echonest_url(song.track_url)
+      hash = JSON.load(open "#{json_link}")
+      song.bpm = hash["response"]["songs"][0]["audio_summary"]["tempo"]
+      song.save
     end
   end
 
   def define_categories
-    categories = [Category.create(:name => "Sleep"), Category.create(:name => "Study"), Category.create(:name => "Party"), Category.create(:name => "Workout")]
+    categories = [Category.find_or_create_by(:name => "Sleep"), Category.find_or_create_by(:name => "Study"), Category.find_or_create_by(:name => "Party"), Category.find_or_create_by(:name => "Workout")]
   end
 
-  def all_songs 
-    Song.all
-  end
 
-  def sort_into_category(songs)
-    songs.each do |song|
-      if song.bpm < 50 
+  def sort_into_category
+    Song.all.each do |song|
+      if song.bpm < 70 
         song.category = Category.find_by(:name => "Sleep")
         song.save
-      elsif song.bpm >= 50 && song.bpm < 70
+      elsif song.bpm >= 70 && song.bpm < 90
         song.category = Category.find_by(:name => "Study")
         song.save
-      elsif song.bpm >= 70 && song.bpm < 100  
+      elsif song.bpm >= 90 && song.bpm < 120  
         song.category = Category.find_by(:name => "Party")
         song.save
       else 
@@ -71,10 +60,8 @@ class SongSorter
     define_categories
     spotify_hash = get_spotify_json
     get_song_objects(spotify_hash)
-    # echonest_hash = get_echonest_json
-    get_echonest_url(song)
-    assign_bpm(echonest_hash)
-    sort_into_category(all_songs)
+    assign_bpms
+    sort_into_category
   end 
 
 end

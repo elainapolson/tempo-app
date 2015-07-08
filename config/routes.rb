@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resources :categories
   resources :songs
 
-  root 'songs#index'
+  root to: 'categories#index'
 
   #root '/' ??
 
