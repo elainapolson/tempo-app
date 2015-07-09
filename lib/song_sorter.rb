@@ -1,6 +1,5 @@
 require 'json'
 require 'open-uri'
-require 'pry'
 
 class SongSorter
 
@@ -13,8 +12,6 @@ class SongSorter
       Song.find_or_create_by(:title => song_hash['track_name'], :artist => song_hash['artist_name'], :track_url => song_hash['track_url'].gsub("https://play.spotify.com/track/", ""))
     end
   end
-
-  # http://developer.echonest.com/api/v4/song/profile?api_key=LIEBMXRVRAQ7FSQIX&track_id=spotify:track:4toSP60xmDNCFuXly8ywNZ&bucket=id:spotify&bucket=audio_summary
   
   def get_echonest_url(track_url)
     "http://developer.echonest.com/api/v4/song/profile?api_key=LIEBMXRVRAQ7FSQIX&track_id=spotify:track:#{track_url}&bucket=id:spotify&bucket=audio_summary" 
@@ -32,7 +29,6 @@ class SongSorter
   def define_categories
     categories = [Category.find_or_create_by(:name => "Sleep"), Category.find_or_create_by(:name => "Study"), Category.find_or_create_by(:name => "Party"), Category.find_or_create_by(:name => "Workout")]
   end
-
 
   def sort_into_category
     Song.all.each do |song|
