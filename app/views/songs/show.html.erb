@@ -1,7 +1,9 @@
-<% @songs.each do |song| %>
-<%= song.title %>:
-<%= song.artist %>
-<%= song.category.name if song.category %>
-<%= song.track_url %>
+  <h1><%= @song.title %></h1>
+  </br>
+  <h2>Artist:<%= @song.artist %></h2>
+
+
+
 </br>
-<% end %>
+
+

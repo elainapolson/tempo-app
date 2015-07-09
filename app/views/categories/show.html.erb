@@ -1,5 +1,16 @@
-  <div><%= @category.name %></div>
+  <div align ="center">
+
+  <h1><%= @category.name %> Playlist</h1>
+
+
 <% @category.songs.each do |song| %>
-<%= song.title %> 
-<%= song.bpm %> <br>
+
+<%= link_to "#{song.title} by #{song.artist}", "https://play.spotify.com/track/#{song.track_url}", :target => "_blank" %>
+
+
+
+<br> 
+
 <% end %>
+
+</div>
