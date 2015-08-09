@@ -3,6 +3,10 @@ require 'open-uri'
 
 class SongSorter
 
+  def initialize
+    @echonest_api = ENV["echonest_api_key"]
+  end
+
   def get_spotify_json
     JSON.load(open "http://charts.spotify.com/api/tracks/most_streamed/us/weekly/latest")
   end
@@ -14,7 +18,7 @@ class SongSorter
   end
   
   def get_echonest_url(track_url)
-    "http://developer.echonest.com/api/v4/song/profile?api_key=LIEBMXRVRAQ7FSQIX&track_id=spotify:track:#{track_url}&bucket=id:spotify&bucket=audio_summary" 
+    "http://developer.echonest.com/api/v4/song/profile?api_key=#{@echonest_api}&track_id=spotify:track:#{track_url}&bucket=id:spotify&bucket=audio_summary" 
   end
 
   def assign_bpms
