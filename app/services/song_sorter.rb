@@ -7,9 +7,10 @@ class SongSorter
     @echonest_api = ENV["echonest_api_key"]
   end
 
-  def get_spotify_json
-    JSON.load(open "http://charts.spotify.com/api/tracks/most_streamed/us/weekly/latest")
-  end
+  # switched to scraping from spotify to billboard
+  # def get_spotify_json
+  #   JSON.load(open "http://charts.spotify.com/api/tracks/most_streamed/us/weekly/latest")
+  # end
 
   def get_song_objects(hash)
     hash["tracks"][1..100].each do |song_hash|
@@ -25,7 +26,9 @@ class SongSorter
     Song.all.each do |song|
       json_link = get_echonest_url(song.track_url)
       hash = JSON.load(open "#{json_link}")
-      song.bpm = hash["response"]["songs"][0]["audio_summary"]["tempo"]
+      if hash["response"]["songs"]
+        song.bpm = hash["response"]["songs"][0]["audio_summary"]["tempo"]
+      end
       song.save
     end
   end
@@ -36,18 +39,20 @@ class SongSorter
 
   def sort_into_category
     Song.all.each do |song|
-      if song.bpm < 70 
-        song.category = Category.find_by(:name => "Sleep")
-        song.save
-      elsif song.bpm >= 70 && song.bpm < 90
-        song.category = Category.find_by(:name => "Study")
-        song.save
-      elsif song.bpm >= 90 && song.bpm < 120  
-        song.category = Category.find_by(:name => "Party")
-        song.save
-      else 
-        song.category = Category.find_by(:name => "Workout")
-        song.save
+      if song.bpm
+        if song.bpm < 70 
+          song.category = Category.find_by(:name => "Sleep")
+          song.save
+        elsif song.bpm >= 70 && song.bpm < 90
+          song.category = Category.find_by(:name => "Study")
+          song.save
+        elsif song.bpm >= 90 && song.bpm < 120  
+          song.category = Category.find_by(:name => "Party")
+          song.save
+        else 
+          song.category = Category.find_by(:name => "Workout")
+          song.save
+        end
       end
     end
   end
