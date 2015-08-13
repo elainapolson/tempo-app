@@ -11,37 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150812200438) do
+ActiveRecord::Schema.define(version: 20150707223427) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-  enable_extension "hstore"
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "pretendees", force: :cascade do |t|
-    t.string   "name"
-    t.string   "twitter"
-    t.string   "instagram"
-    t.integer  "user_id"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
-    t.hstore   "word_histogram",                array: true
-    t.hstore   "instagram_photos",              array: true
-    t.hstore   "tweets",                        array: true
-  end
-
-  create_table "reports", force: :cascade do |t|
-    t.integer  "frequency"
-    t.integer  "pretendee_id"
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
-    t.boolean  "active",       default: false
-    t.integer  "topic_id"
   end
 
   create_table "songs", force: :cascade do |t|
@@ -53,27 +31,6 @@ ActiveRecord::Schema.define(version: 20150812200438) do
     t.datetime "updated_at",  null: false
     t.integer  "category_id"
     t.string   "track_url"
-  end
-
-  create_table "topics", force: :cascade do |t|
-    t.string   "name"
-    t.integer  "user_id"
-    t.integer  "pretendee_id"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
-    t.hstore   "wiki_text"
-    t.hstore   "ny_times_articles",              array: true
-    t.hstore   "tweets",                         array: true
-    t.string   "image"
-  end
-
-  create_table "users", force: :cascade do |t|
-    t.string   "name"
-    t.string   "email"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string   "provider"
-    t.string   "uid"
   end
 
 end
