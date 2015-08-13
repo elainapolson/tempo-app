@@ -13,3 +13,192 @@
  *= require_tree .
  *= require_self
  */
+
+/*    CSS RESET  */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* CSS RESET */
+
+html, body {
+ min-height: 100%;
+ background: url('space-background.jpg') no-repeat center center fixed;
+
+}
+
+body {
+ font-family: 'Austin';
+ font-weight: bold;
+ font-size: 150%;
+ color:rgba(255,225,225,1.00);
+ padding: 20px;
+ background: rgba(0, 0, 0, .8);
+  -webkit-background-size: cover;
+ -moz-background-size: cover;
+ -o-background-size: cover;
+ background-size: cover;
+ height: 100%;
+}
+
+h1 {
+ font-family: 'Merriweather', Georgia, serif;
+ margin: 0 0 20px;
+ text-align: center;
+ color: #fff;
+ font-weight: normal;
+ font-size: 70px;
+}
+
+h2 {
+ font-family: 'Avenir', serif;
+ margin: 0 0 20px;
+ text-align: center;
+ color: #99CCFF;
+ font-weight: normal;
+ font-size: 25px;
+}
+
+table {
+ table-layout: fixed;
+ width: 100%;
+ padding: 0;
+ margin: 0;
+ border-top: 1px solid #ccc;
+ border-left: 1px solid #ccc;
+ border-right: 1px solid #ccc;
+ border-bottom: 0;
+ border-collapse: collapse;
+ border-spacing: 0px;
+}
+
+tr:nth-child(odd) {
+ background: #efefef ;
+}
+
+tr:nth-child(even) {
+ background: #fff;
+}
+
+th {
+ font-family: Georgia, serif;
+ background: #666;
+ color: #fff;
+ font-size: 1em;
+}
+
+td {
+ vertical-align: top;
+ border-top: 0;
+ border-left: 0;
+ padding: 10px;
+ border-right: 1px dotted #ccc;
+ border-bottom: 2px solid #ccc;
+}
+
+th {
+ vertical-align: top;
+ border:0;
+ padding: 10px;
+}
+
+td {
+ font-size: 1.1em;
+}
+
+.change {
+ width: 60px;
+}
+
+a:link, a:visited {
+ color: rgb(38, 196, 255);
+ text-decoration: none;
+}
+
+a:hover, a:active {
+ color: #003399;
+ text-decoration: none;
+}
+
+a.button, input[type="submit"] {
+ position: relative;
+ color: #fff;
+ text-decoration: none;
+ background-color: #666;
+ font-weight: 700;
+ font-size: 1em;
+ display: inline-block;
+ padding: 5px 20px;
+ -webkit-border-radius: 4px;
+ -moz-border-radius: 4px;
+ border-radius: 4px;
+ -webkit-box-shadow: 0px 9px 0px rgba(60,60,60,1), 0px 9px 25px rgba(50,50,50,.7);
+ -moz-box-shadow: 0px 9px 0px rgba(60,60,60,1), 0px 9px 25px rgba(50,50,50,.7);
+ box-shadow: 0px 9px 0px rgba(60,60,60,1), 0px 9px 25px rgba(50,50,50,.7);
+ margin: 10px 0;
+ -webkit-transition: all .1s ease;
+ -moz-transition: all .1s ease;
+ -ms-transition: all .1s ease;
+ -o-transition: all .1s ease;
+ transition: all .1s ease;
+}
+
+a.button:active, input[type="submit"]:active {
+ -webkit-box-shadow: 0px 3px 0px rgba(60,60,60,1), 0px 3px 6px rgba(50,50,50,.9);
+ -moz-box-shadow: 0px 3px 0px rgba(60,60,60,1), 0px 3px 6px rgba(50,50,50,.9);
+ box-shadow: 0px 3px 0px rgba(60,60,60,1), 0px 3px 6px rgba(50,50,50,.9);
+ position: relative;
+ top: 6px;
+}
+
+label, input {
+ display: block;
+ margin: 5px 0;
+ font-size: 1em;
+}
+
+input {
+ color:rgba(255,0,0,1.00);
+ padding: 10px;
+ border: 1px solid #ccc;
+}
+
+input[type="submit"] {
+ border: 0;
+ cursor: pointer;
+ outline: 0;
+}
+
+.main-photo img{
+  width:23%;
+  float:left;
+  padding-left: .1em;
+  margin-left:20px;
+  /*margin-right:auto;*/
+}
+
+.main-photo img :first-child {
+  padding-left: 0;
+}
+
+.home {
+  color: #99CCFF;
+  font-family: 'Avenir', serif;
+}
