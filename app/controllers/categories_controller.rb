@@ -7,14 +7,8 @@ class CategoriesController < ApplicationController
   end
   
   def show
+    SongSorter.sort
     @category = Category.find(params[:id])
   end 
-
-  # private
-  #   # Use callbacks to share common setup or constraints between actions.
-  #   def set_post
-  #     @post = Category.find(params[:id])
-  #   end
-  # end
 
 end
