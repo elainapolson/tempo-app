@@ -14,11 +14,12 @@
  *= require_self
  */
 
-
-body {
- min-height: 100%;
- background-image: url(background.jpg) no-repeat center center fixed;
-
+html, body {
+ height: 100%;
+ background: url(background.jpg) no-repeat center center fixed;
+ margin: 0;
+ padding: 0;
+ border: 0;
 }
 
 body {
