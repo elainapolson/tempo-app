@@ -7,7 +7,6 @@ class CategoriesController < ApplicationController
   end
   
   def show
-    SongSorter.sort
     @category = Category.find(params[:id])
   end 
 
