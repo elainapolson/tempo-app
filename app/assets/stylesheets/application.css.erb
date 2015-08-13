@@ -14,7 +14,10 @@
  *= require_self
  */
 
+//= depend_on_asset "space-background.jpg"
+
 /*    CSS RESET  */
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -41,6 +44,7 @@ time, mark, audio, video {
 html, body {
  min-height: 100%;
  background: url('<%= asset_path("space-background.jpg") %>') no-repeat center center fixed;
+
 }
 
 body {
