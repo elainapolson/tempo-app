@@ -1,23 +1,23 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: pretender_development
-  pool: 5
+  database: 
+  pool: 
   username: 
   password:
 
 test:
   adapter: postgresql
   encoding: unicode
-  database: pretender_test
-  pool: 5
+  database: 
+  pool: 
   username: 
   password:
 
 production:
   adapter: postgresql
   encoding: unicode
-  database: pretender_production
-  pool: 25
+  database: 
+  pool: 
   username: 
   password:
