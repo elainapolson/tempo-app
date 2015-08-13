@@ -1,23 +1,14 @@
-require 'open-uri'
-require 'nokogiri'
-require 'pry'
-
 class BillboardScraper
+  require 'open-uri'
+  require 'nokogiri'
 
-  def create_top_songs
+  def get_top_songs
     html = open("http://www.billboard.com/charts/hot-100").read
     doc = Nokogiri::HTML(html)
-    
-    songs = doc.search(".spotify").collect {|song| song}
-    spotify_links = songs.collect {|s| s.attributes["href"].value}
+    spotify_ids = doc.search(".spotify").collect {|song| song.attributes["href"].value.gsub("https://embed.spotify.com/?uri=spotify:track:","")}
 
-    names.each_with_index do |name,index| 
-      Student.new(name,taglines[index],excerpts[index],pictures[index],links[index])
-    end
-
-    Student.students_hash
-
+    SpotifyWrapper.new(spotify_ids).create_song_objects
   end
 
-
 end
+

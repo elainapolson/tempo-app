@@ -1,21 +1,9 @@
-require 'json'
-require 'open-uri'
-
 class SongSorter
+  require 'json'
+  require 'open-uri'
 
   def initialize
     @echonest_api = ENV["echonest_api_key"]
-  end
-
-  # switched to scraping from spotify to billboard
-  # def get_spotify_json
-  #   JSON.load(open "http://charts.spotify.com/api/tracks/most_streamed/us/weekly/latest")
-  # end
-
-  def get_song_objects(hash)
-    hash["tracks"][1..100].each do |song_hash|
-      Song.find_or_create_by(:title => song_hash['track_name'], :artist => song_hash['artist_name'], :track_url => song_hash['track_url'].gsub("https://play.spotify.com/track/", ""))
-    end
   end
   
   def get_echonest_url(track_url)
@@ -31,10 +19,6 @@ class SongSorter
       end
       song.save
     end
-  end
-
-  def define_categories
-    categories = [Category.find_or_create_by(:name => "Sleep"), Category.find_or_create_by(:name => "Study"), Category.find_or_create_by(:name => "Party"), Category.find_or_create_by(:name => "Workout")]
   end
 
   def sort_into_category
@@ -57,16 +41,16 @@ class SongSorter
     end
   end
 
-  def self.sort
-    self.new.call
-  end
-
   def call 
-    define_categories
-    spotify_hash = get_spotify_json
-    get_song_objects(spotify_hash)
+    BillboardScraper.new.get_top_songs
+    CategoryCreator.new.define_categories
+    binding.pry
     assign_bpms
     sort_into_category
   end 
+
+  def self.sort
+    self.new.call
+  end
 
 end
