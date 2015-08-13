@@ -44,7 +44,6 @@ class SongSorter
   def call 
     BillboardScraper.new.get_top_songs
     CategoryCreator.new.define_categories
-    binding.pry
     assign_bpms
     sort_into_category
   end 
