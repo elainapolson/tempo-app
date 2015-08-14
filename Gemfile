@@ -2,6 +2,11 @@ source 'https://rubygems.org'
 
 gem 'rspotify'
 
+gem 'bootstrap-sass', '~> 3.1.1'
+
+gem 'omniauth'
+gem 'omniauth-spotify'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.3'
 

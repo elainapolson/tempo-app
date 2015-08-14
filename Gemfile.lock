@@ -39,6 +39,8 @@ GEM
     arel (6.0.0)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
+    bootstrap-sass (3.1.1.1)
+      sass (~> 3.2)
     builder (3.2.2)
     byebug (5.0.0)
       columnize (= 0.9.0)
@@ -102,6 +104,8 @@ GEM
     omniauth-oauth2 (1.3.1)
       oauth2 (~> 1.0)
       omniauth (~> 1.2)
+    omniauth-spotify (0.0.9)
+      omniauth-oauth2 (~> 1.1)
     pg (0.18.2)
     pry (0.10.1)
       coderay (~> 1.1.0)
@@ -192,11 +196,14 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bootstrap-sass (~> 3.1.1)
   coffee-rails (~> 4.1.0)
   figaro
   google-analytics-rails
   jbuilder (~> 2.0)
   jquery-rails
+  omniauth
+  omniauth-spotify
   pg
   pry
   pry-byebug

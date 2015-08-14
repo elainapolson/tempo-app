@@ -1,10 +1,21 @@
 Rails.application.routes.draw do
+  get 'sessions/new'
+
+  get 'sessions/create'
+
+  get 'sessions/failure'
+
+  resources :users
   resources :categories
   resources :songs
 
   root to: 'categories#index'
 
-  #root '/' ??
+  get   '/login', :to => 'sessions#new', :as => :login
+  get '/auth/:provider/callback', :to => 'sessions#create'
+  get '/auth/failure', :to => 'sessions#failure'
+  get "/signout" => "sessions#destroy", :as => :signout
+
 
 
   # The priority is based upon order of creation: first created -> highest priority.
