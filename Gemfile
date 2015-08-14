@@ -1,5 +1,14 @@
 source 'https://rubygems.org'
 
+gem "therubyracer"
+gem "less-rails"
+# twitter bootstrap css & javascript toolkit
+gem 'twitter-bootswatch-rails', '~> 3.3.4'
+
+# twitter bootstrap helpers gem, e.g., alerts etc...
+gem 'twitter-bootswatch-rails-helpers'
+
+
 gem 'rspotify'
 
 gem 'bootstrap-sass', '~> 3.1.1'

@@ -12,6 +12,7 @@ class SpotifyWrapper
   end
 
   def make_playlist(name)
+    @user.create_playlist!(name)
   end
 
   def create_song_objects(song_ids)
