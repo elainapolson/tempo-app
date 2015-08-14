@@ -7,8 +7,7 @@ class BillboardScraper
     doc = Nokogiri::HTML(html)
     spotify_ids = doc.search(".spotify").collect {|song| song.attributes["href"].value.gsub("https://embed.spotify.com/?uri=spotify:track:","")}
 
-    SpotifyWrapper.new(spotify_ids).create_song_objects
+    SpotifyWrapper.new.create_song_objects(spotify_ids)
   end
 
 end
-
