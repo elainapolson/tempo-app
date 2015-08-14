@@ -9,9 +9,9 @@ Rails.application.routes.draw do
   resources :categories
   resources :songs
 
-  root to: 'categories#index'
+  root to: 'welcome#index'
 
-  get   '/login', :to => 'sessions#new', :as => :login
+  get  '/login', :to => 'sessions#new', :as => :login
   get '/auth/:provider/callback', :to => 'sessions#create'
   get '/auth/failure', :to => 'sessions#failure'
   get "/signout" => "sessions#destroy", :as => :signout
