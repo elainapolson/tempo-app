@@ -1,13 +1,23 @@
 Rails.application.routes.draw do
+  
+  resources :billboards
   get 'sessions/new'
 
   get 'sessions/create'
 
   get 'sessions/failure'
 
-  resources :users
-  resources :categories
-  resources :songs
+  resources :users do
+    resources :playlists do
+      resources :songs
+    end
+  end  
+
+  resources :billboards, only: [:show, :index] do
+    resources :playlists do
+      resources :songs
+    end
+  end  
 
   root to: 'welcome#index'
 
@@ -15,8 +25,6 @@ Rails.application.routes.draw do
   get '/auth/:provider/callback', :to => 'sessions#create'
   get '/auth/failure', :to => 'sessions#failure'
   get "/signout" => "sessions#destroy", :as => :signout
-
-
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

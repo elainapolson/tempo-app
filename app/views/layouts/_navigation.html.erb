@@ -12,11 +12,11 @@
       <div class="navbar-collapse collapse">
         <ul class="nav navbar-nav navbar-right scrollto">
           <li>
-            <%= link_to "Hot 100 Playlists", categories_path %>
+            <%= link_to "Hot 100 Playlists",  billboards_path %>
           </li>
           <li>
             <% if current_user %>
-            <%= link_to "Your Playlists", user_path(current_user) %>
+            <%= link_to "My Playlists", user_playlists_path(current_user) %>
             <% end %>
           </li>
           <li>

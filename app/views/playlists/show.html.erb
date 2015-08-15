@@ -1,10 +1,10 @@
 <div align ="center">
 
-<h1><%= @category.name %> Playlist</h1>
+<h1><%= @playlist.name %> Playlist</h1>
 
-<% @category.songs.each do |song| %>
+<% @playlist.songs.each do |song| %>
 
-<h3><%= link_to "#{song.title} (#{song.artist})", "/songs/#{song.id}" %></h3>
+<h3><%= link_to "#{song.title} (#{song.artist})", user_playlist_song_path(@user, @playlist, song) %></h3>
 
 <iframe src="https://embed.spotify.com/?uri=spotify:track:<%= song.track_url %>" width="300" height="80" frameborder="0" allowtransparency="true"></iframe>
 
