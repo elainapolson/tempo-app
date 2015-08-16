@@ -1,0 +1,5 @@
+<h1 class="page-header">Add a song to be sorted!</h1>
+<%= form_tag songs_search_path, method: "get", html: { class: "form" } do |f| %>
+   <%= text_field_tag(:query) %>
+ <%= submit_tag "Search", class: "btn btn-primary" %>
+<% end %>

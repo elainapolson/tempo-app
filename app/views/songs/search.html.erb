@@ -1,0 +1,11 @@
+
+<h1 class="page-header">Songs Matching <%= @search %></h1>
+<ul>
+<% @songs.each do |song| %>
+  <li><%= song.name %> by <%= song.artists.first.name %> </li>
+  <%= form_for [@user, @playlist, @song], as: :song do |f| %>
+    <%= f.hidden_field :track_url, :value => song.id %>
+    <%= f.submit "Add song!", class: "btn btn-primary" %>
+  <% end %>
+<% end %>
+</ul>

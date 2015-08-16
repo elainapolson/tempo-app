@@ -13,6 +13,8 @@ class Song < ActiveRecord::Base
     if hash["response"]["songs"]
       self.bpm = hash["response"]["songs"][0]["audio_summary"]["tempo"]
       self.save
+    else
+      # do something when there are no songs found...
     end
   end
 

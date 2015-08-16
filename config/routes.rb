@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 
   get 'sessions/failure'
 
+  get 'songs/search', to: 'songs#search'
+
   resources :users do
     resources :playlists do
       resources :songs

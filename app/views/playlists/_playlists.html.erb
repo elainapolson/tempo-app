@@ -1,0 +1,15 @@
+<div class="main-photo" id="sleep">
+<%= link_to image_tag("sleep.jpg", :border => 0), user_playlist_path(@user, @playlists.find_by(:name => "Sleep")) %>
+</div>
+
+<div class="main-photo" id="study">
+<%= link_to image_tag("study.jpg", :border => 0), user_playlist_path(@user, @playlists.find_by(:name => "Study")) %>
+</div>
+
+<div class="main-photo" id="party">
+<%= link_to image_tag("party.jpg", :border => 0), user_playlist_path(@user, @playlists.find_by(:name => "Party")) %>
+</div>
+
+<div class="main-photo" id="workout">
+<%= link_to image_tag("workout.jpg", :border => 0), user_playlist_path(@user, @playlists.find_by(:name => "Workout")) %>
+</div>
