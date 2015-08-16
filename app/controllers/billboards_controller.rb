@@ -1,7 +1,7 @@
 class BillboardsController < ApplicationController
 
   def index
-    @billboard = billboard_user
+    @billboard = User.find_by(:name => "Billboard Hot 100")
     @playlists = @billboard.playlists
   end
 
