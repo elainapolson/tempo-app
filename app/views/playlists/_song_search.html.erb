@@ -1,5 +1,15 @@
-<h1 class="page-header">Add a song to be sorted!</h1>
-<%= form_tag songs_search_path, method: "get", html: { class: "form" } do |f| %>
-   <%= text_field_tag(:query) %>
- <%= submit_tag "Search", class: "btn btn-primary" %>
+<h3>Add a song to be sorted!</h3>
+
+<%= form_tag songs_search_path, method: "get" do |f| %>
+
+<div class="form-group">
+  <div class="input-group row col-sm-4">
+
+    <%= text_field_tag(:query, "", placeholder: "enter a song", class: "form-control") %>
+    <span class="input-group-btn"><%= submit_tag "Search", class: "btn btn-default" %></span>
+  </div>
+</div>
+
 <% end %>
+
+
