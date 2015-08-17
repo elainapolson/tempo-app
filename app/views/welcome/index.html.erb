@@ -1,1 +1,22 @@
-<h1>Welcome to tempo</h1>
+<div align ="center" class="container">
+
+<br>
+<br>
+
+<h1>Welcome to tempo, the application that sorts your favorite songs into playlists based on their energy level... So you always have the right playlist for any activity.</h1>
+<br>
+  <h3>Get started!</h3>
+
+<br>
+<%= link_to "Use playlists from Billboard Hot 100", billboards_path, :class => "btn btn-success btn-lg" %>
+
+<% if current_user %>
+<%= link_to "Create your own playlists", user_playlists_path(current_user), :class => "btn btn-success btn-lg" %>
+<% else %>
+<%= link_to "Create your own playlists", "/auth/spotify", :class => "btn btn-success btn-lg" %>
+<% end %>
+
+<br>
+<br>
+
+</div>
