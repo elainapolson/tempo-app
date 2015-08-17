@@ -8,14 +8,10 @@ class Song < ActiveRecord::Base
   delegate :user, to: :playlist
 
   def assign_bpm
-    json_link = EchonestWrapper.new.get_echonest_url(self.track_url)
-    hash = JSON.load(open "#{json_link}")
-    if hash["response"]["songs"]
-      self.bpm = hash["response"]["songs"][0]["audio_summary"]["tempo"]
-      self.save
-    else
-      # do something when there are no songs found...
-    end
+    bpm = EchonestWrapper.new.find_bpm(self)
+    self.bpm = bpm
+    self.save
+    binding.pry
   end
 
   def sort_to_playlist(user)
