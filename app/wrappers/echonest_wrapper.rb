@@ -10,7 +10,6 @@ class EchonestWrapper
     "http://developer.echonest.com/api/v4/song/profile?api_key=#{@echonest_api}&track_id=spotify:track:#{track_url}&bucket=id:spotify&bucket=audio_summary" 
   end
 
-
   def find_bpm(song)
     json_link = self.get_echonest_url(song.track_url)
     hash = JSON.load(open "#{json_link}")

@@ -32,11 +32,5 @@ class SongsController < ApplicationController
     def song_params
       params.require(:song).permit(:title, :artist, :track_url, :bpm, :genre, :playlist_id)
     end
-  
-# when a user searches for a song, display top 5
-# if they click add, 
-# create song object through spotify wrapper, 
-# then assign bpm,
-# put on playlist
 
 end

@@ -3,7 +3,6 @@ class Song < ActiveRecord::Base
   require 'json'
   require 'open-uri'
 
-  # Song#user delegated to playlist.user
   belongs_to :playlist
   delegate :user, to: :playlist
 
@@ -30,10 +29,5 @@ class Song < ActiveRecord::Base
       end
     end
   end
-
-
-# when a user adds a song, 
-# create song object through spotify wrapper, 
-# then assign bpm
 
 end
