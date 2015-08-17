@@ -25,7 +25,6 @@ class SongsController < ApplicationController
     @song.save
     @song.assign_bpm
     @song.sort_to_playlist(current_user)
-    binding.pry
     redirect_to user_playlists_path(current_user)
   end
 
