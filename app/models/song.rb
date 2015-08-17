@@ -11,7 +11,6 @@ class Song < ActiveRecord::Base
     bpm = EchonestWrapper.new.find_bpm(self)
     self.bpm = bpm
     self.save
-    binding.pry
   end
 
   def sort_to_playlist(user)
