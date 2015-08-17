@@ -22,17 +22,26 @@
 html, body {
   height: 100%;
 }
+
 .wrapper {
   min-height: 100%;
+  background: url(record-player-overlay.jpg) no-repeat center center fixed;
   height: auto !important;
   height: 100%;
-  margin: 0 auto -142px; /* the bottom margin is the negative value of the footer's height */
-}
-.footer, .push {
-  padding-top: 10px;
-  height: 142px; /* .push must be the same height as .footer */
+  margin: 0 auto -30px; /* the bottom margin is the negative value of the footer's height */
 }
 
+.footer, .push {
+  height: 30px; /* .push must be the same height as .footer */
+
+}
+
+.footer {
+  background-color: #777; 
+  padding-top: 6px;
+  padding-bottom: 3px;
+  font: #F8F8FF;
+}
 
 .main-photo img {
   width: 23%;

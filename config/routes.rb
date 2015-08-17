@@ -9,6 +9,8 @@ Rails.application.routes.draw do
 
   get 'songs/search', to: 'songs#search'
 
+  get 'welcome/about', to: 'welcome#about', :as => :about
+
   resources :users do
     resources :playlists do
       resources :songs
