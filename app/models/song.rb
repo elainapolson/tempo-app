@@ -13,7 +13,6 @@ class Song < ActiveRecord::Base
   end
 
   def sort_to_playlist(user)
-    binding.pry
     if self.bpm
       if self.bpm < 70 
         self.playlist = Playlist.find_by(:name => "Sleep", :user_id => user.id)
@@ -29,7 +28,6 @@ class Song < ActiveRecord::Base
         self.save
       end
     end
-    binding.pry
   end
 
 end
