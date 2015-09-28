@@ -3,7 +3,6 @@ class PlaylistsController < ApplicationController
   def index 
     @user = current_user
     @playlists = @user.playlists
-    @spotify_user = SpotifyUserWrapper.new(@user.id)
   end
   
   def show
@@ -14,5 +13,11 @@ class PlaylistsController < ApplicationController
       @user = billboard_user
     end
   end 
+
+  def spotify
+    @playlist = Playlist.find(params[:id])
+    SpotifyWrapper.new.add_playlist_to_spotify(@playlist)
+    redirect_to user_playlist_path(current_user, @playlist)
+  end
 
 end
