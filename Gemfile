@@ -8,7 +8,6 @@ gem 'twitter-bootswatch-rails', '~> 3.3.4'
 # twitter bootstrap helpers gem, e.g., alerts etc...
 gem 'twitter-bootswatch-rails-helpers'
 
-
 gem 'rspotify'
 
 gem 'bootstrap-sass', '~> 3.1.1'
@@ -38,8 +37,8 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'figaro'
-
 gem 'pg'
+
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -55,10 +54,12 @@ group :development, :test do
   gem 'web-console', '~> 2.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+
 end
 
 group :production do
   gem 'google-analytics-rails'
   gem 'rails_12factor'
+  
 end
 

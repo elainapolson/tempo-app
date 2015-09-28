@@ -30,6 +30,8 @@ Rails.application.routes.draw do
   get '/auth/failure', :to => 'sessions#failure'
   get "/signout" => "sessions#destroy", :as => :signout
 
+  get '/users/:user_id/playlists/:id/spotify' => 'playlists#spotify', :as => :spotify
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

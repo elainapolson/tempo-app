@@ -25,7 +25,8 @@ class SongsController < ApplicationController
     @song.save
     @song.assign_bpm
     @song.sort_to_playlist(current_user)
-    redirect_to user_playlists_path(current_user)
+    @playlist = @song.playlist
+    redirect_to user_playlist_path(current_user, @playlist)
   end
 
   private

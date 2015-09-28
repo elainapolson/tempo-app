@@ -1,7 +1,7 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: 
+  database: tempo
   pool: 
   username: 
   password:
