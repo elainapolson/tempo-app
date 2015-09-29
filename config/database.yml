@@ -9,7 +9,7 @@ development:
 test:
   adapter: postgresql
   encoding: unicode
-  database: 
+  database: tempo
   pool: 
   username: 
   password:
@@ -17,7 +17,7 @@ test:
 production:
   adapter: postgresql
   encoding: unicode
-  database: 
+  database: tempo
   pool: 
   username: 
   password:
